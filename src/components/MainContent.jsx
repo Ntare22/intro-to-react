@@ -1,9 +1,11 @@
 import React from 'react';
+// import TodoList from './content/TodoList'
 
 const MainContent = () => {
   return (
     <main>
-      This is my Main Content
+      {/* <TodoList /> */}
+      This is the Main Content Section
     </main>
   );
 }
