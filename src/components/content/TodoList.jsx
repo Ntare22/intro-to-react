@@ -1,25 +1,13 @@
 import React from "react";
+import ToDoItem from "./ToDoItem";
+import TodosData from "../../TodosData";
+
+// console.log(TodosData);
+
+const todoItems = TodosData.map((todo) => <ToDoItem key={todo.id} item={todo.item} completed={todo.completed}/>);
 
 const TodoList = () => {
-  return (
-    <div>
-      <h4>ToDo List</h4>
-      <ol>
-        <li>
-          Item
-          <input type="checkbox" />
-        </li>
-        <li>
-          Item
-          <input type="checkbox" />
-        </li>
-        <li>
-          Item
-          <input type="checkbox" />
-        </li>
-      </ol>
-    </div>
-  );
+  return <div className="todo-list">{todoItems}</div>;
 };
 
 export default TodoList;
