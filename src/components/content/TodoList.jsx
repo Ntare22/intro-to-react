@@ -16,7 +16,7 @@ import TodosData from "../../TodosData";
     
     render() { 
       const todoItems = this.state.list.map((todo) => <ToDoItem key={todo.id} item={todo.item} completed={todo.completed}/>);
-      console.log(this.state.list)
+      // console.log(this.state.list)
       return ( 
         <div className="todo-list">{todoItems}</div>
       );
