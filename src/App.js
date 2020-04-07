@@ -1,15 +1,21 @@
-import React from 'react'
-import NavBar from './components/NavBar'
-import MainContent from './components/MainContent'
+import React from 'react';
+
+function handleClick() {
+  console.log('I was clicked');
+}
+
 
 const App = () => {
-  return ( 
+  return (
     <div>
-      <NavBar />
-      <MainContent />
-      {/* <Footer /> */}
+      <img src='https://www.fillmurray.com/200/100' alt='' onMouseOver={() => {console.log('Hovered over image!')}} />
+      <br />
+      <br />
+      <button onClick={handleClick}>Click Me</button>
     </div>
-  )
+  );
 }
 
 export default App;
+
+
