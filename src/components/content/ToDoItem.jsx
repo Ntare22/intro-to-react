@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ToDoItem = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div className='todo-item'>
       <input type="checkbox" checked={props.completed}/>

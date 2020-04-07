@@ -4,10 +4,23 @@ import TodosData from "../../TodosData";
 
 // console.log(TodosData);
 
-const todoItems = TodosData.map((todo) => <ToDoItem key={todo.id} item={todo.item} completed={todo.completed}/>);
 
-const TodoList = () => {
-  return <div className="todo-list">{todoItems}</div>;
-};
-
+// const TodoList = () => {
+  //   return <div className="todo-list">{todoItems}</div>;
+  // };
+  
+  class TodoList extends React.Component {
+    state = { 
+      list: TodosData
+    }
+    
+    render() { 
+      const todoItems = this.state.list.map((todo) => <ToDoItem key={todo.id} item={todo.item} completed={todo.completed}/>);
+      console.log(this.state.list)
+      return ( 
+        <div className="todo-list">{todoItems}</div>
+      );
+    }
+}
+ 
 export default TodoList;

@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react'
+import NavBar from './components/NavBar'
+import MainContent from './components/MainContent'
 
-class App extends Component {
- 
-  state = { 
-    isLoggedIn: true
-   }
-
-  render() { 
-    let wordDisplay = this.state.isLoggedIn ? 'in' : 'out'
-    return ( 
-      <div>
-        <h1>You are currently logged {wordDisplay}</h1>
-      </div>
-     );
-  }
+const App = () => {
+  return ( 
+    <div>
+      <NavBar />
+      <MainContent />
+      {/* <Footer /> */}
+    </div>
+  )
 }
- 
+
 export default App;
