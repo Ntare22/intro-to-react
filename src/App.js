@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function handleClick() {
-  console.log('I was clicked');
+class App extends Component {
+  state = { 
+    count: 0
+   }
+
+  handleClick = () => {
+    this.setState((prevState) => {
+      return {
+        count: prevState.count + 1
+      }
+    })
+    console.log('I\'ve clicked the change button')
+  }
+
+  render() { 
+    return ( 
+      <div style={{paddingLeft: 25}}>
+        <h1 style={{paddingLeft: 25}}>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Change!</button>
+      </div>
+     );
+  }
 }
-
-
-const App = () => {
-  return (
-    <div>
-      <img src='https://www.fillmurray.com/200/100' alt='' onMouseOver={() => {console.log('Hovered over image!')}} />
-      <br />
-      <br />
-      <button onClick={handleClick}>Click Me</button>
-    </div>
-  );
-}
-
+ 
 export default App;
-
-
