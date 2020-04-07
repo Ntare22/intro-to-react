@@ -1,27 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react'
+import NavBar from './components/NavBar'
+import MainContent from './components/MainContent'
 
-class App extends Component {
-  state = { 
-    count: 0
-   }
-
-  handleClick = () => {
-    this.setState((prevState) => {
-      return {
-        count: prevState.count + 1
-      }
-    })
-    console.log('I\'ve clicked the change button')
-  }
-
-  render() { 
-    return ( 
-      <div style={{paddingLeft: 25}}>
-        <h1 style={{paddingLeft: 25}}>{this.state.count}</h1>
-        <button onClick={this.handleClick}>Change!</button>
-      </div>
-     );
-  }
+const App = () => {
+  return ( 
+    <div>
+      <NavBar />
+      <MainContent />
+      {/* <Footer /> */}
+    </div>
+  )
 }
- 
+
 export default App;
