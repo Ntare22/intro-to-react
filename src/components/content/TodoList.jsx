@@ -2,12 +2,6 @@ import React from "react";
 import ToDoItem from "./ToDoItem";
 import TodosData from "../../TodosData";
 
-// console.log(TodosData);
-
-// const TodoList = () => {
-//   return <div className="todo-list">{todoItems}</div>;
-// };
-
 class TodoList extends React.Component {
   state = {
     list: TodosData,
