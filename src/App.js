@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
+import Conditional from './components/Conditional'
 
 class App extends Component {
-  state = {  }
+  // constructor() {
+  //   super();
+  //   this.state = { 
+  //     isLoading: true
+  //    }
+  // }
+  state = {
+    isLoading: true,
+    unreadMessages: [
+      'Call your Mom!',
+      'New Spam email available. All links are definitely safe to clicke'
+    ]
+  }
 
   componentDidMount() {
-    // This is usually where the api Call goes
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    // return new and updated state based on props
-  }
-
-  getSnapshotBeforeUpdate() {
-    // create a backup of the way current things are
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    // return true if want it to update
-    // return false if not
-  }
-
-  componentWillUnmount() {
-    // this is where you tear down or cleanup your code before your component dissappears
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 1500)
   }
 
   render() { 
     return ( 
       <div>
-        Code goes here!
+        {
+          this.state.isLoading ? 
+          <h1>Loading...</h1> : 
+          <Conditional />
+        }
+
+        {
+          this.state.unreadMessages.length > 0 && 
+          <h2>You have {this.state.unreadMessages.length} unread messages!</h2>
+        }
+        
       </div>
      );
   }
