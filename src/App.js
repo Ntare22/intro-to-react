@@ -1,46 +1,25 @@
 import React, { Component } from 'react';
-import Conditional from './components/Conditional'
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = { 
-  //     isLoading: true
-  //    }
-  // }
   state = {
-    isLoading: true,
-    unreadMessages: [
-      'Call your Mom!',
-      'New Spam email available. All links are definitely safe to clicke'
-    ]
+    loggedIn: false
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
-      })
-    }, 1500)
+  handleLogin = () => {
+    return (
+      this.state.loggedIn ? this.setState({ loggedIn: false }) : this.setState({ loggedIn: true })
+    )
   }
 
   render() { 
     return ( 
       <div>
-        {
-          this.state.isLoading ? 
-          <h1>Loading...</h1> : 
-          <Conditional />
-        }
-
-        {
-          this.state.unreadMessages.length > 0 && 
-          <h2>You have {this.state.unreadMessages.length} unread messages!</h2>
-        }
-        
+        <h1>{this.state.loggedIn ? 'User is logged in' : 'User is logged out'}</h1>
+        <button onClick={this.handleLogin}>{this.state.loggedIn ? 'Logout' : 'Login'}</button>
       </div>
      );
   }
 }
  
 export default App;
+
