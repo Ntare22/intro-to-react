@@ -2,27 +2,23 @@ import React, { Component } from 'react';
 
 class App extends Component {
   state = { 
-    loading: false,
-    character: { }
+    firstName: '',
+    lastName: ''
    }
-
-  componentDidMount() {
-    this.setState({ loading: true })
-    fetch('https://reqres.in/api/users/1')
-      .then(response => response.json())
-      .then(data => {
-        const user = data.data;
-        this.setState({
-          loading: false,
-          character: user
-        })
-      })
+  
+  handleInputChange = (event) => {
+    const { name, value } = event.target
+    this.setState({ [name]: value })
   }
-
-  render() { 
+   
+   render() { 
     return ( 
       <div>
-        {this.state.loading ? 'Loading' : `${this.state.character.first_name} ${this.state.character.last_name}`}
+      <form>
+        <input type='text' placeholder='First Name' value={this.state.firstName} name='firstName' onChange={this.handleInputChange}/> 
+        <input type='text' placeholder='Last Name' value={this.state.lastName} name='lastName' onChange={this.handleInputChange}/> 
+      </form>
+      <div>{this.state.firstName} {this.state.lastName}</div>
       </div>
      );
   }
