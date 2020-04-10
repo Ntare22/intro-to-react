@@ -1,25 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react'
+import NavBar from './components/NavBar'
+import MainContent from './components/MainContent'
 
-class App extends Component {
-  state = {
-    loggedIn: false
-  }
-
-  handleLogin = () => {
-    return (
-      this.state.loggedIn ? this.setState({ loggedIn: false }) : this.setState({ loggedIn: true })
-    )
-  }
-
-  render() { 
-    return ( 
-      <div>
-        <h1>{this.state.loggedIn ? 'User is logged in' : 'User is logged out'}</h1>
-        <button onClick={this.handleLogin}>{this.state.loggedIn ? 'Logout' : 'Login'}</button>
-      </div>
-     );
-  }
+const App = () => {
+  return ( 
+    <div>
+      <NavBar />
+      <MainContent />
+      {/* <Footer /> */}
+    </div>
+  )
 }
- 
+
 export default App;
 
