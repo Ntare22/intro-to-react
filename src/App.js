@@ -4,71 +4,91 @@ class App extends Component {
   state = { 
     firstName: '',
     lastName: '',
-    isFriendly: true,
+    age: '',
+    destination: '',
     gender: '',
-    favColor: 'blue'
    }
-  
-  handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target
+
+  handleChange = (event) => {
+    const { name, value, checked, type } = event.target
+    console.log(name, value)
     type === 'checkbox' ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
   }
-   
-   render() { 
+
+  handleSubmit = (event) => {
+    const checkedBoxes = Object.values(event.target.diet).filter(input => input.checked === true)
+    const diet = checkedBoxes.map(input => input.value)
+    
+    const info = {
+      firstname: event.target.firstName.value,
+      lastname: event.target.lastName.value,
+      age: event.target.age.value,
+      gender: event.target.gender.value,
+      destination: event.target.destination.value,
+      diet
+    }
+  
+    alert(`
+      Name: ${info.firstname} ${info.lastname}
+      Age: ${info.age}
+      Gender: ${info.gender}
+      Destination: ${info.destination},
+      Dietary Restrictions: ${info.diet}
+      ` )
+    
+    event.preventDefault();
+  }
+
+  render() { 
     return ( 
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' placeholder='First Name' value={this.state.firstName} name='firstName' onChange={this.handleInputChange}/> 
-          <input type='text' placeholder='Last Name' value={this.state.lastName} name='lastName' onChange={this.handleInputChange}/> 
-          
-          <div>{this.state.firstName} {this.state.lastName}</div>
-          <textarea 
-            value={'some default value'}
-            onChange={this.handleInputChange}
-          />
+          <input type='text' name='firstName' placeholder='First Name' onChange={this.handleChange} />
           <br />
-          <label>
-            <input 
-              type='checkbox' 
-              checked={this.state.isFriendly}
-              name='isFriendly'
-              onChange={this.handleInputChange}
-            /> is Friendly?
-          </label>
+          <input type='tex' name='lastName' placeholder='Last Name' onChange={this.handleChange} />
           <br />
-          <label>
-            <input 
-              type='radio' 
-              checked={this.state.gender === 'male'}
-              name='gender'
-              value='male'
-              onChange={this.handleInputChange}
-            /> Male
-          </label>
-
-          <label>
-            <input 
-              type='radio' 
-              checked={this.state.gender === 'female'}
-              name='gender'
-              value='female'
-              onChange={this.handleInputChange}
-            /> Female
-          </label>
-          <h1>You are {this.state.gender}</h1>
+          <input type='number' name='age' placeholder='Age' onChange={this.handleChange} />
+          <div>
+            <p>Gender</p>
+            <label>
+              <input name='gender' type='radio' value='male' onChange={this.handleChange} />
+              Male
+            </label>
+            <br />
+            <label>
+              <input name='gender' type='radio' value='female' onChange={this.handleChange} />
+              Female
+            </label>
+            <br />
+            <label>
+              <input name='gender' type='radio' value='not-specified' onChange={this.handleChange} />
+              Prefer not to say
+            </label>
+          </div>
+          <div>
+            <p>Destination</p>
+            <select onChange={this.handleChange} name='destination' value={this.state.value} >
+              <option value='kigali'>Kigali</option>
+              <option value='nairobi'>Nairobi</option>
+              <option value='kampala'>Kampala</option>
+            </select>
+          </div>
+          <div name='diet'>
+            <p>Dietary Restrictions</p>
+            <label>
+              <input type='checkbox' value='kosher' name='diet' onChange={this.handleChange} />
+              Kosher
+            </label>
+            <label>
+              <input type='checkbox' value='vegetarian' name='diet' onChange={this.handleChange} />
+              Vegetarian
+            </label>
+            <label>
+              <input type='checkbox' value='Lactose Free' name='diet' onChange={this.handleChange} />
+              Lactose Free
+            </label>
+          </div>
           <br />
-          <label>Favorite Color:</label>
-          <select 
-          value={this.state.favColor}
-          onChange={this.handleInputChange}
-          name='favColor'
-          >
-            <option value='blue'>blue</option>
-            <option value='yellow'>yellow</option>
-            <option value='green'>green</option>
-            <option value='red'>red</option>
-          </select>
-          <h1>my favorite color {this.state.favColor}</h1>
           <button>Submit</button>
         </form>
       </div>
